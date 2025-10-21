@@ -1,3 +1,4 @@
+import javax.management.RuntimeErrorException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,7 +53,13 @@ public class EventBusT implements EventBus {
 
         if (lista != null) {
             for (Subscriber suscriptor : lista) {
-                suscriptor.Handle(evento);
+                new Thread(() -> {
+                    try {
+                        suscriptor.Handle(evento);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }).start();
             }
         }
 

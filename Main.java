@@ -1,16 +1,50 @@
+import jdk.jfr.Event;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) throws  InterruptedException {
-        Contador contador = new Contador();
 
-        Thread t1 = new Thread(() -> contador.incrementar());
-        Thread t2 = new Thread(() -> contador.incrementar());
+        //Publicador
+        SistemaDePedidos sistema = new SistemaDePedidos();
 
-        t1.start();
-        t2.start();
+        //Event bus
+        EventBusT eventBus = new EventBusT();
 
-        t1.join();
-        t2.join();
+        //Suscriptores
+        Barra barra = new Barra(eventBus);
+        Cocina cocina = new Cocina(eventBus);
+        PanelLED panel = new PanelLED();
+        SistemaDeSonido sistemaSonido = new SistemaDeSonido();
+        Banda banda = new Banda(eventBus);
 
-        System.out.println("Valor final: " + contador.contador);
+        //Demostracion de extensibilidad(nuevo suscriptor)
+        SistemaDeHumo sistemHumo = new SistemaDeHumo();
+
+        //Eventos
+        BandaTocandoEvent bandaEvent = new BandaTocandoEvent("Los seguidores de Dijkstra","El Algoritmo del amor", 180);
+        BebidaServidaEvent bebidasEvent = new BebidaServidaEvent(5,"Cerveza");
+        ComidaPreparadaEvent comidaEvent = new ComidaPreparadaEvent(123,"Hamburguesa");
+
+        List<Evento> eventos = new ArrayList<>();
+        eventos.add(bebidasEvent);
+        eventos.add(comidaEvent);
+
+        PedidoRealizafoEvent pedidoRealizado = new PedidoRealizafoEvent(bebidasEvent.getMesaID(), comidaEvent.getPedidoID(), eventos);
+
+        eventBus.addPublicador(sistema);
+
+        eventBus.suscribir(pedidoRealizado, barra);
+        eventBus.suscribir(pedidoRealizado, cocina);
+        eventBus.suscribir(bandaEvent, sistemaSonido);
+        eventBus.suscribir(bandaEvent, panel);
+        eventBus.suscribir(bandaEvent, sistemHumo);
+        eventBus.suscribir(pedidoRealizado, panel);
+
+        eventBus.publicar(pedidoRealizado);
+        eventBus.publicar(bandaEvent);
+
+
     }
 }

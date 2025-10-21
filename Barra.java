@@ -17,13 +17,13 @@ public class Barra implements Subscriber, Publisher {
 
             for (Evento eventoPedido : pedido.getItems()) {
                 if (eventoPedido instanceof BebidaServidaEvent) {
-                    System.out.println("[BARRA] Se recibio pedido" + pedido.getPedidoID() + " de la mesa" + pedido.getMesaID());
+                    System.out.println("[BARRA] Se recibio pedido: " + pedido.getPedidoID() + " de la mesa " + pedido.getMesaID());
                     Thread.sleep(2000);
 
-                    BebidaServidaEvent eventoBarra = (BebidaServidaEvent) evento;
-                    System.out.println("[BARRA] Bebidas servidas: " + eventoBarra.getBebida() + " de la mesa " + eventoBarra.getMesaID());
+                    BebidaServidaEvent eventoBarra = (BebidaServidaEvent) eventoPedido;
+                    System.out.println("[BARRA] Bebidas terminadas: " + eventoBarra.getBebida() + " de la mesa " + pedido.getMesaID());
 
-                    publicar(eventoPedido);
+                    publicar(eventoBarra);
                 }
             }
         }

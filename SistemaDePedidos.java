@@ -11,8 +11,7 @@ public class SistemaDePedidos implements Publisher {
     }
 
     @Override
-    public void publicar(Evento evento)
-    {
+    public void publicar(Evento evento) throws InterruptedException {
         eventBus.publicar(evento);
     }
 
