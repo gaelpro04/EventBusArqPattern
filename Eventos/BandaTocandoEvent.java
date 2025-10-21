@@ -1,3 +1,5 @@
+package Eventos;
+
 public class BandaTocandoEvent implements Evento {
 
     private String nombreBanda;
@@ -36,6 +38,6 @@ public class BandaTocandoEvent implements Evento {
 
     @Override
     public String getNombreEvento() {
-        return "BandaTocandoEvent";
+        return "Eventos.BandaTocandoEvent";
     }
 }

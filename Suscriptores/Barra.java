@@ -1,3 +1,8 @@
+package Suscriptores;
+
+import Eventos.*;
+import Publicador.Publisher;
+
 public class Barra implements Subscriber, Publisher {
 
     private EventBus eventBus;
@@ -43,6 +48,6 @@ public class Barra implements Subscriber, Publisher {
 
     @Override
     public String getPublicador() {
-        return "Barra";
+        return "Suscriptores.Barra";
     }
 }

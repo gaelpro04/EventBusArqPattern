@@ -1,3 +1,7 @@
+package Suscriptores;
+
+import Eventos.*;
+
 public class PanelLED implements Subscriber {
     @Override
     public void Handle(Evento evento) throws InterruptedException {

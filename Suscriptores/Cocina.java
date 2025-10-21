@@ -1,3 +1,11 @@
+package Suscriptores;
+
+import Eventos.ComidaPreparadaEvent;
+import Eventos.PedidoRealizafoEvent;
+import Eventos.EventBus;
+import Eventos.Evento;
+import Publicador.Publisher;
+
 public class Cocina implements Subscriber, Publisher {
 
     private EventBus eventBus;
@@ -39,6 +47,6 @@ public class Cocina implements Subscriber, Publisher {
 
     @Override
     public String getPublicador() {
-        return "Cocina";
+        return "Suscriptores.Cocina";
     }
 }

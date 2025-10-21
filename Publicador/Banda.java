@@ -1,3 +1,8 @@
+package Publicador;
+
+import Eventos.EventBus;
+import Eventos.Evento;
+
 public class Banda implements Publisher {
 
     private EventBus eventBus;
@@ -18,6 +23,6 @@ public class Banda implements Publisher {
 
     @Override
     public String getPublicador() {
-        return "Banda";
+        return "Publicador.Banda";
     }
 }

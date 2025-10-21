@@ -1,3 +1,5 @@
+package Eventos;
+
 public class BebidaServidaEvent implements Evento {
 
     private int mesaID;
@@ -26,6 +28,6 @@ public class BebidaServidaEvent implements Evento {
 
     @Override
     public String getNombreEvento() {
-        return "BebidaServidaEvent";
+        return "Eventos.BebidaServidaEvent";
     }
 }

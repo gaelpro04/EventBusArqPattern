@@ -1,4 +1,8 @@
-import javax.management.RuntimeErrorException;
+package Eventos;
+
+import Publicador.Publisher;
+import Suscriptores.Subscriber;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

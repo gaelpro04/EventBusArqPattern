@@ -1,3 +1,8 @@
+package Suscriptores;
+
+import Eventos.BandaTocandoEvent;
+import Eventos.Evento;
+
 public class SistemaDeSonido implements Subscriber {
     @Override
     public void Handle(Evento evento) {

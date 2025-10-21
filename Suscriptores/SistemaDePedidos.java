@@ -1,3 +1,10 @@
+package Suscriptores;
+
+import Eventos.EventBus;
+import Eventos.EventBusT;
+import Eventos.Evento;
+import Publicador.Publisher;
+
 public class SistemaDePedidos implements Publisher {
 
     private EventBus eventBus;
@@ -27,6 +34,6 @@ public class SistemaDePedidos implements Publisher {
 
     @Override
     public String getPublicador() {
-        return "SistemaDePedidos";
+        return "Suscriptores.SistemaDePedidos";
     }
 }

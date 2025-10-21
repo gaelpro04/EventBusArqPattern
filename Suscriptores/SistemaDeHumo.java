@@ -1,6 +1,10 @@
+package Suscriptores;
+
+import Eventos.BandaTocandoEvent;
+import Eventos.Evento;
 
 //Clase extra: Agregar un nuevo suscriptor
-//Primero se parte en que se debe implementar la interfaz Subscriber
+//Primero se parte en que se debe implementar la interfaz Suscriptores.Subscriber
 //para posteriormente añadir el desarrollo del metodo que hace distinguir
 //entre los demas eventos
 public class SistemaDeHumo implements Subscriber {
